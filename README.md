@@ -6,7 +6,7 @@ Projeto em Java com Spring Boot para gerenciar usuários, projetos, equipes e ta
 - Java 17+
 - Spring Boot
 - Spring Data JPA
-- PostgreSQL
+- PostgreSQL (Supabase)
 - Spring Security (JWT)
 
 ## Como rodar
