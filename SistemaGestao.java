@@ -1,4 +1,7 @@
 import java.util.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class SistemaGestao {
     private static Scanner sc = new Scanner(System.in);
@@ -73,21 +76,65 @@ public class SistemaGestao {
             System.out.println("Cadastre pelo menos um GERENTE primeiro!");
             return;
         }
+
         System.out.print("Nome do projeto: ");
         String nome = sc.nextLine();
         System.out.print("Descrição: ");
         String desc = sc.nextLine();
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataInicio = null;
+        LocalDate dataTerminoPrevista = null;
+
+        // Ler data de início
+        while (dataInicio == null) {
+            try {
+                System.out.print("Data de início (dd/MM/yyyy): ");
+                String input = sc.nextLine();
+                dataInicio = LocalDate.parse(input, formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato inválido! Use dd/MM/yyyy.");
+            }
+        }
+
+        // Ler data de término prevista
+        while (dataTerminoPrevista == null) {
+            try {
+                System.out.print("Data de término prevista (dd/MM/yyyy): ");
+                String input = sc.nextLine();
+                dataTerminoPrevista = LocalDate.parse(input, formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato inválido! Use dd/MM/yyyy.");
+            }
+        }
+
+        // Status
+        System.out.println("Status do projeto:");
+        System.out.println("1 - PLANEJADO");
+        System.out.println("2 - EM_ANDAMENTO");
+        System.out.println("3 - CONCLUIDO");
+        System.out.println("4 - CANCELADO");
+        int statusOpcao = sc.nextInt(); sc.nextLine();
+        StatusProjeto status = switch (statusOpcao) {
+            case 2 -> StatusProjeto.EM_ANDAMENTO;
+            case 3 -> StatusProjeto.CONCLUIDO;
+            case 4 -> StatusProjeto.CANCELADO;
+            default -> StatusProjeto.PLANEJADO;
+        };
+
+        // Gerente
         System.out.println("Escolha um gerente (índice): ");
+        List<Usuario> gerentes = new ArrayList<>();
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i).getPerfil() == Perfil.GERENTE) {
                 System.out.println(i + " - " + usuarios.get(i).getNome());
+                gerentes.add(usuarios.get(i));
             }
         }
         int idx = sc.nextInt(); sc.nextLine();
         Usuario gerente = usuarios.get(idx);
 
-        Projeto p = new Projeto(nome, desc, gerente);
+        Projeto p = new Projeto(nome, desc, gerente, dataInicio, dataTerminoPrevista, status);
         projetos.add(p);
         System.out.println("Projeto cadastrado!");
     }

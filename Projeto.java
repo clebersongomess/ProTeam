@@ -8,25 +8,32 @@ public class Projeto {
     private StatusProjeto status;
     private Usuario gerente;
 
-    public Projeto(String nome, String descricao, Usuario gerente) {
+    // Novo construtor completo
+    public Projeto(String nome, String descricao, Usuario gerente,
+                   LocalDate dataInicio, LocalDate dataTerminoPrevista, StatusProjeto status) {
         this.nome = nome;
         this.descricao = descricao;
-        this.dataInicio = LocalDate.now();
-        this.dataTerminoPrevista = dataInicio.plusMonths(6); // prazo padrão
-        this.status = StatusProjeto.PLANEJADO;
+        this.dataInicio = dataInicio;
+        this.dataTerminoPrevista = dataTerminoPrevista;
+        this.status = status;
         this.gerente = gerente;
     }
 
+    // Getters
     public String getNome() { return nome; }
     public String getDescricao() { return descricao; }
     public StatusProjeto getStatus() { return status; }
     public Usuario getGerente() { return gerente; }
+    public LocalDate getDataInicio() { return dataInicio; }
+    public LocalDate getDataTerminoPrevista() { return dataTerminoPrevista; }
 
     @Override
     public String toString() {
         return "Projeto{" +
                 "nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
+                ", dataInicio=" + dataInicio +
+                ", dataTerminoPrevista=" + dataTerminoPrevista +
                 ", status=" + status +
                 ", gerente=" + (gerente != null ? gerente.getNome() : "nenhum") +
                 '}';
