@@ -1,4 +1,4 @@
-name: Build and Package JAR
+name: Build, Test and Package JAR
 
 on:
   push:
@@ -23,6 +23,13 @@ jobs:
 
       - name: Build with Maven
         run: mvn -B package --file pom.xml
+
+      - name: Run Spring Boot (integration test)
+        run: java -jar target/gestao-projetos-1.0-SNAPSHOT.jar
+        env:
+          SPRING_DATASOURCE_URL: ${{ secrets.SUPABASE_URL }}
+          SPRING_DATASOURCE_USERNAME: ${{ secrets.SUPABASE_USER }}
+          SPRING_DATASOURCE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
