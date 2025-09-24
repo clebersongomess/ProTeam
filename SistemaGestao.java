@@ -28,6 +28,8 @@ public class SistemaGestao {
                 case 4 -> listarProjetos();
                 case 5 -> cadastrarEquipe();
                 case 6 -> listarEquipes();
+                case 0 -> System.out.println("Saindo do sistema... Até logo!");
+                default -> System.out.println("Opção inválida, tente novamente.");
             }
         } while (opcao != 0);
     }
