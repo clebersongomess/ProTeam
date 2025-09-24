@@ -57,7 +57,7 @@ GestaoProjetos/
 
 ### 1. Clonar o repositório
 ```bash
-git clone [https://github.com/seu-usuario/GestaoProjetos.git](https://github.com/clebersongomess/ProTeam)
+git clone https://github.com/clebersongomess/ProTeam
 ```
 
 ### 2. Compilar os arquivos
