@@ -89,6 +89,7 @@ java SistemaGestao
 5 - Cadastrar Equipe
 6 - Listar Equipes
 0 - Sair
+
 Escolha: 1
 Nome: João Silva
 CPF: 12345678900
