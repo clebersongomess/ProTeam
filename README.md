@@ -104,4 +104,31 @@ Usuário cadastrado!
 Escolha: 2
 Usuário{nome='João Silva', cpf='12345678900', email='joao@email.com',
 cargo='Analista', perfil=GERENTE}
+
+=== Sistema de Gestão ===
+Escolha: 3
+Nome do projeto: Sistema Acadêmico
+Descrição: Projeto de gestão de alunos
+Escolha um gerente (índice):
+0 - João Silva
+Projeto cadastrado!
+
+=== Sistema de Gestão ===
+Escolha: 4
+Projeto{nome='Sistema Acadêmico', descricao='Projeto de gestão de alunos',
+status=PLANEJADO, gerente=João Silva}
+
+=== Sistema de Gestão ===
+Escolha: 5
+Nome da equipe: Equipe Alpha
+Descrição: Equipe de desenvolvimento
+Equipe cadastrada!
+
+=== Sistema de Gestão ===
+Escolha: 6
+Equipe{nome='Equipe Alpha', descricao='Equipe de desenvolvimento', membros=0}
+
+=== Sistema de Gestão ===
+Escolha: 0
+Saindo do sistema...
 ```
